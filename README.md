@@ -1,2 +1,2 @@
 # sand-bucket
-High Performance Search from within a Python scope
+High Performance Indexing from within Python
