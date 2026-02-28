@@ -1,6 +1,9 @@
 #ifndef MURMUR3_HEADER
 #define MURMUR3_HEADER
 
+#include <cstdint>
+#include <cstdlib>
+
 static inline uint32_t rotl32(uint32_t x, int8_t r) {
     return (x << r) | (x >> (32 - r));
 }
@@ -14,9 +17,12 @@ static inline uint32_t fmix32(uint32_t h) {
     return h;
 }
 
+/**
+ * 32 bit murmur3
+ * */
 static uint32_t murmur3_32(const void* key, size_t len, uint32_t seed = 0) {
     const uint8_t* data = static_cast<const uint8_t*>(key);
-    const size_t nblocks = len / 4;
+    const size_t nblocks = len >> 2;
 
     uint32_t h1 = seed;
 
@@ -68,9 +74,12 @@ static inline uint64_t fmix64(uint64_t k) {
     return k;
 }
 
+/**
+ * 64 bit murmur3 hash
+ * */
 static uint64_t murmur3_64(const void *key, size_t len, uint32_t seed = 0) {
     const uint8_t *data = (const uint8_t *)key;
-    const int nblocks = len / 16;
+    const int nblocks = len >> 4;
 
     uint64_t h1 = seed;
     uint64_t h2 = seed;

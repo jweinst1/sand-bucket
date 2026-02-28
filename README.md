@@ -1,2 +1,2 @@
 # sand-bucket
-High Performance Indexing from within Python
+High Performance Multimap in Python and C++
